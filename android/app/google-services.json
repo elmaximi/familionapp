@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "973819654556",
+    "firebase_url": "https://familionapp.firebaseio.com",
+    "project_id": "familionapp",
+    "storage_bucket": "familionapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973819654556:android:77e180f00d4615a546d859",
+        "android_client_info": {
+          "package_name": "com.example.familionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973819654556-r8iu4qn1r506ah50pgf0spdmakho00fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK64NFoF2jqLpDY75lnIktkhqit-N-rxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973819654556-r8iu4qn1r506ah50pgf0spdmakho00fu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
