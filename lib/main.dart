@@ -7,7 +7,6 @@ import 'package:familionapp/src/bloc/simple_bloc_delegate.dart';
 import 'package:familionapp/src/repository/user_repository.dart';
 import 'package:familionapp/src/ui/home_screen.dart';
 import 'package:familionapp/src/ui/login/login_screen.dart';
-import 'package:familionapp/src/ui/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

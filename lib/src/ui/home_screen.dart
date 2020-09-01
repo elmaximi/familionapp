@@ -1,6 +1,6 @@
-import 'package:familionapp/src/ui/pages/accountpage.dart';
-import 'package:familionapp/src/ui/pages/explorepage.dart';
-import 'package:familionapp/src/ui/pages/favoritespage.dart';
+import 'package:familionapp/src/ui/product/accountpage.dart';
+import 'package:familionapp/src/ui/product/explorepage.dart';
+import 'package:familionapp/src/ui/product/favoritespage.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen>{
             title: Text("Explore"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            title: Text("Favorites"),
+            icon: Icon(Icons.shopping_cart),
+            title: Text("Wishlist"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),

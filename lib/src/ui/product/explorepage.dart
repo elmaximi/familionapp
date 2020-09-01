@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:familionapp/src/ui/pages/wallpaper_view_screen.dart';
+import 'package:familionapp/src/bloc/product/product_view_screen.dart';
 import 'package:familionapp/src/util/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -78,8 +78,8 @@ class _ExplorePageState extends State<ExplorePage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ProductViewPage(
-                                      image: snapshot
-                                          .data.documents[index].data["url"],
+                                      data: snapshot
+                                          .data.documents[index],
                                     )));
                       },
                       child: Hero(

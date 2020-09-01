@@ -17,15 +17,14 @@ class AddProductScreen extends StatefulWidget {
 class _AddProductScreenState extends State<AddProductScreen> {
 
   File _image;
-
-  final ImageLabeler labeler = FirebaseVision.instance.imageLabeler();
-
+  
   List<ImageLabel> detectedLabels;
   List<String> labelsInString = [];
 
   final Firestore _db = Firestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
+  final ImageLabeler labeler = FirebaseVision.instance.imageLabeler();
 
   bool _isUploading = false;
   bool _isCompletedUploading = false;
@@ -99,7 +98,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
     
     final FirebaseVisionImage visionImage = FirebaseVisionImage.fromFile(image);
     
-    
     List<ImageLabel> labels = await labeler.processImage(visionImage);
     
     labelsInString =[];
@@ -110,8 +108,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
      detectedLabels = labels;
      _image = image;
    });
+   
 
   }
+
 
   void _uploadProduct() async {
 
@@ -123,7 +123,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
       FirebaseUser user = await _auth.currentUser(); 
       String uid = user.uid;
 
-      StorageUploadTask task = _storage.ref().child("products").child(uid).child(fileName).putFile(_image);
+      StorageUploadTask task = _storage.ref()
+      .child("products").child(uid)
+      .child(fileName).putFile(_image);
 
       task.events.listen((e) {
         if(e.type == StorageTaskEventType.progress){
@@ -132,14 +134,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
           });
         }
         if(e.type == StorageTaskEventType.success){
-
           setState(() {
             _isCompletedUploading = true;
             _isUploading = true;
           });
-
           e.snapshot.ref.getDownloadURL().then((url){
-
             _db.collection("products").add({
               "url": url,
               "date": DateTime.now(),
@@ -174,7 +173,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
               ),
             ],
           );
-
         }
       );
     }

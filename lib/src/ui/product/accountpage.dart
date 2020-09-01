@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:familionapp/src/ui/pages/add_product_screen.dart';
-import 'package:familionapp/src/ui/pages/wallpaper_view_screen.dart';
+import 'package:familionapp/src/bloc/product/product_view_screen.dart';
+import 'package:familionapp/src/bloc/product/add_product_screen.dart';
 import 'package:familionapp/src/util/config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -141,7 +141,7 @@ class _AccountPageState extends State<AccountPage> {
                         .snapshots(),
                     builder: (ctx, AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasData) {
-                        return StaggeredGridView.countBuilder( 
+                        return StaggeredGridView.countBuilder(
                           crossAxisCount: 2,
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -151,16 +151,17 @@ class _AccountPageState extends State<AccountPage> {
                           mainAxisSpacing: 15,
                           crossAxisSpacing: 15,
                           padding: EdgeInsets.symmetric(
-                            horizontal: 15,
+                            horizontal: 16,
                           ),
                           itemBuilder: (ctx, index) {
-                            return InkWell( //abre la imagen del producto
+                            return InkWell(
+                              //abre la imagen del producto
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => ProductViewPage(
-                                              image: snapshot.data
+                                              data: snapshot.data
                                                   .documents[index].data["url"],
                                             )));
                               },
@@ -233,18 +234,21 @@ class _AccountPageState extends State<AccountPage> {
                                         width: 77,
                                       ),
                                       IconButton(
-                                          //add details product button icon
-                                          icon: Icon(Icons.visibility),
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
+                                        //add details product button icon
+                                        icon: Icon(Icons.visibility),
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
                                                   builder: (context) =>
                                                       ProductViewPage(
-                                              image: snapshot.data
-                                                  .documents[index].data["url"],
-                                            )));
-                                          }),
+                                                          data: snapshot
+                                                              .data.documents[index],
+                                                      ),
+                                              ),
+                                          );
+                                        }
+                                      ),
                                     ],
                                   ),
                                 ],
